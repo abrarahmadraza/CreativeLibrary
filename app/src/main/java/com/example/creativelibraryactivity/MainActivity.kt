@@ -12,7 +12,6 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity(), AndroidInterface.SelectImageButtonClickListener {
     companion object {
         private const val TAG = "MainActivity"
-        private var CURRENT_IMG_URL: String? = null
         private const val MAIN_URL = "https://marketingmobile.surge.sh/"
     }
 
@@ -47,16 +46,6 @@ class MainActivity : AppCompatActivity(), AndroidInterface.SelectImageButtonClic
                     super.onConsoleMessage(message, lineNumber, sourceID)
 
                     if (message != null && message.contains("I am the selected Image [object Object]")) {
-
-                        /** Return This Url
-                        val intent=Intent()
-                        intent.putExtra("resultUrl",CURRENT_IMG_URL)
-                        setResult(Activity.RESULT_OK,intent)
-                        finish()
-
-                         **/
-
-                        //ImagePreviewCard_SelectButton__1WnvC
                         loadJS(web_view_home)
                        // Log.d(TAG, "$CURRENT_IMG_URL")
                     } else if (message != null && message.contains("[object Object] selectedImage")) {
@@ -142,8 +131,17 @@ class MainActivity : AppCompatActivity(), AndroidInterface.SelectImageButtonClic
         }
         if (url == "closeButton") {
             web_view_home.reload()
-        } else {
-            CURRENT_IMG_URL = url
+        }
+        else
+        {
+            /** Return This Url
+            val intent=Intent()
+            intent.putExtra("resultUrl",url)
+            setResult(Activity.RESULT_OK,intent)
+            finish()
+
+             **/
+
         }
 
     }
