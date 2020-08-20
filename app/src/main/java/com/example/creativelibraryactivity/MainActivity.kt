@@ -55,7 +55,10 @@ class MainActivity : AppCompatActivity(), AndroidInterface.SelectImageButtonClic
                         finish()
 
                          **/
-                        Log.d(TAG, "$CURRENT_IMG_URL")
+
+                        //ImagePreviewCard_SelectButton__1WnvC
+                        loadJS(web_view_home)
+                       // Log.d(TAG, "$CURRENT_IMG_URL")
                     } else if (message != null && message.contains("[object Object] selectedImage")) {
                         loadJS(web_view_home)
                     }
@@ -110,6 +113,17 @@ class MainActivity : AppCompatActivity(), AndroidInterface.SelectImageButtonClic
              
             divs3[i].addEventListener('click',function(){
                Android.onButtonsClicked("goBack");
+            })
+          
+        }
+        
+         var divs4 = document.getElementsByClassName('ImagePreviewCard_SelectButton__1WnvC');
+        for (var i = 0, n = divs4.length; i < n; i++) {
+             
+            divs4[i].addEventListener('click',function(){
+            var container=document.getElementsByClassName('ImagePreviewCard_previewImageContainer__3TVJ5');
+            var images = container[0].getElementsByTagName("img");
+               Android.onButtonsClicked(images[1].src);
             })
           
         }
